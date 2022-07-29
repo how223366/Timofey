@@ -1,3 +1,5 @@
+# NAME:GoogleMail&microsoftMail
+
 HOST-SUFFIX,hotmail,Microsoft
 HOST-SUFFIX,hotmail.co,Microsoft
 HOST-SUFFIX,hotmail.com,Microsoft
@@ -5,3 +7,6 @@ HOST-SUFFIX,hotmail.eu,Microsoft
 HOST-SUFFIX,hotmail.net,Microsoft
 HOST-SUFFIX,hotmail.org,Microsoft
 HOST-SUFFIX,microsoftemail.com,Microsoft
+HOST-SUFFIX,gmail.com,Google
+HOST-SUFFIX,googlemail.com,Google
+HOST-KEYWORD,gmail,Google
