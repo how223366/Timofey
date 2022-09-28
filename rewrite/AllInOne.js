@@ -39,6 +39,9 @@ hostname = biz.caiyunapp.com, testflight.apple.com, ap*.intsig.net, *.bilibili.c
 # https://app.bilibili.com/x/v2/(splash|search/square) url reject-200
 # https://api.bilibili.com/x/v2/dm/ad url reject-200
 
+# > 哔哩哔哩番剧开启1080P+
+# ^https:\/\/ap(p|i)\.bilibili\.com\/((pgc\/player\/api\/playurl)|(x\/v2\/account\/myinfo\?)|(x\/v2\/account/mine\?)) url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/bilifj.js
+
 # > 知乎去广告+优化
 # 知乎处理用户信息
 ^https?:\/\/api\.zhihu\.com\/people\/ url script-response-body https://gist.githubusercontent.com/blackmatrix7/2e550ebf28ca60d620654e394ec47e0b/raw/zhihu.js
