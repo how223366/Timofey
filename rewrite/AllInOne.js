@@ -1,6 +1,7 @@
 hostname = biz.caiyunapp.com, testflight.apple.com, ap*.intsig.net, *.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com, www.zhihu.com,api.zhihu.com,zhuanlan.zhihu.com,appcloud2.zhihu.com,103.41.167.236,103.41.167.234,103.41.167.235,103.41.167.226,api.weibo.cn, mapi.weibo.com,*.uve.weibo.com, mp.weixin.qq.com, *account.wps.com, *account.wps.cn, api.m.jd.com, ios*.prod.ftl.netflix.com, pan.baidu.com
 
-# > 彩云天气SVIP解锁(By Tartarus)需开启QuanX资源解析器
+# > 彩云天气SVIP解锁(By Tartarus)
+# 需开启QuanX资源解析器
 彩云天气SVIP = type=http-response,requires-body=1,max-size=0,pattern=https?:\/\/biz\.caiyunapp\.com\/(membership_rights|v2\/user),script-path=https://raw.githubusercontent.com/Tartarus2014/Script/master/CaiYun.js
 
 # > Testflight下载修正
