@@ -1,4 +1,4 @@
-hostname = biz.caiyunapp.com, testflight.apple.com, ap*.intsig.net, *.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com, www.zhihu.com,api.zhihu.com,zhuanlan.zhihu.com,appcloud2.zhihu.com,103.41.167.236,103.41.167.234,103.41.167.235,103.41.167.226
+hostname = biz.caiyunapp.com, testflight.apple.com, ap*.intsig.net, *.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com, www.zhihu.com,api.zhihu.com,zhuanlan.zhihu.com,appcloud2.zhihu.com,103.41.167.236,103.41.167.234,103.41.167.235,103.41.167.226, ios.prod.ftl.netflix.com
 
 # > 彩云天气SVIP解锁(By Tartarus)
 # 需开启QuanX资源解析器
@@ -97,3 +97,9 @@ URL-REGEX,^https?:\/\/api\.zhihu\.com\/commercial_api\/launch_v2\? url reject-di
 # > 知乎去广告 (onewayticket255)
 # https://api.zhihu.com/(ad|drama|fringe|commercial|market/popover|search/(top|preset|tab)|.*featured-comment-ad) url reject-200
 
+
+# > Netflix评分 (yichahucha)
+# ^https?://ios[-\w]*\.prod\.ftl\.netflix\.com/iosui/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D url script-request-header https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
+# ^https?://ios[-\w]*\.prod\.ftl\.netflix\.com/iosui/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
+# >> 单集评分
+# ^https?://ios\.prod\.ftl\.netflix\.com/iosui/warmer/.+type=show-ath url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating_season.js
