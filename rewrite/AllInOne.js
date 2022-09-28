@@ -1,17 +1,15 @@
-hostname = biz.caiyunapp.com, testflight.apple.com, ap*.intsig.net, *.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com, www.zhihu.com,api.zhihu.com,zhuanlan.zhihu.com,appcloud2.zhihu.com,103.41.167.236,103.41.167.234,103.41.167.235,103.41.167.226
+hostname = biz.caiyunapp.com, testflight.apple.com, ap*.intsig.net, *.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com, www.zhihu.com,api.zhihu.com,zhuanlan.zhihu.com,appcloud2.zhihu.com,103.41.167.236,103.41.167.234,103.41.167.235,103.41.167.226,api.weibo.cn, mapi.weibo.com,*.uve.weibo.com, mp.weixin.qq.com, *account.wps.com, *account.wps.cn, api.m.jd.com, ios*.prod.ftl.netflix.com, pan.baidu.com
 
-# 彩云天气SVIP解锁(By Tartarus)
-# 需开启QuanX资源解析器
+# > 彩云天气SVIP解锁(By Tartarus)需开启QuanX资源解析器
 彩云天气SVIP = type=http-response,requires-body=1,max-size=0,pattern=https?:\/\/biz\.caiyunapp\.com\/(membership_rights|v2\/user),script-path=https://raw.githubusercontent.com/Tartarus2014/Script/master/CaiYun.js
 
-# Testflight下载修正
+# > Testflight下载修正
 ^https?:\/\/testflight\.apple\.com\/v2\/accounts\/.*\/apps\/\d*/builds/\d*/install url request-body storefrontId" : ".*", request-body storefrontId" : "143441-1,29",
 
-# 全能扫描王(By NobyDa)
+# > 全能扫描王(By NobyDa)
 ^https:\/\/(api|api-cs)\.intsig\.net\/purchase\/cs\/query_property\? url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/CamScanner.js
 
-# BiliBili去广告
-# ------
+# > BiliBili去广告
 # 去除动态中的话题
 ^https?:\/\/api\.vc\.bilibili\.com\/topic_svr\/v1\/topic_svr url reject-dict
 # 去除动态中的最常访问
@@ -35,10 +33,16 @@ hostname = biz.caiyunapp.com, testflight.apple.com, ap*.intsig.net, *.bilibili.c
 # 漫画去广告
 ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/Flash url reject-dict
 ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/ListFlash url reject-dict
-# ------
 
-# 知乎去广告+优化
-# ------
+# > 哔哩哔哩动画去广告 (onewayticket255)
+https://app.bilibili.com/x/v2/(splash|search/square) url reject-200
+https://api.bilibili.com/x/v2/dm/ad url reject-200
+
+# > 哔哩哔哩番剧开启1080P+
+^https:\/\/ap(p|i)\.bilibili\.com\/((pgc\/player\/api\/playurl)|(x\/v2\/account\/myinfo\?)|(x\/v2\/account/mine\?)) url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/bilifj.js
+
+
+# > 知乎去广告+优化
 # 知乎处理用户信息
 ^https?:\/\/api\.zhihu\.com\/people\/ url script-response-body https://gist.githubusercontent.com/blackmatrix7/2e550ebf28ca60d620654e394ec47e0b/raw/zhihu.js
 # 知乎信息流去广告
@@ -89,4 +93,37 @@ URL-REGEX,^https?:\/\/api\.zhihu\.com\/commercial_api\/launch_v2\? url reject-di
 ^https?:\/\/api\.zhihu\.com\/people\/self\/new_user_card url reject-200
 # 知乎去除Tab页关注人头像
 ^https?:\/\/api\.zhihu\.com\/moments\/tab_v2 url reject-dict
-# ------
+
+# > 知乎去广告 (onewayticket255)
+https://api.zhihu.com/(ad|drama|fringe|commercial|market/popover|search/(top|preset|tab)|.*featured-comment-ad) url reject-200
+
+# > Netflix评分 (yichahucha)
+^https?://ios[-\w]*\.prod\.ftl\.netflix\.com/iosui/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D url script-request-header https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
+^https?://ios[-\w]*\.prod\.ftl\.netflix\.com/iosui/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
+# >> 单集评分
+^https?://ios\.prod\.ftl\.netflix\.com/iosui/warmer/.+type=show-ath url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating_season.js
+
+# > 京东比价
+^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig) url script-response-body https://service.2ti.st/QuanX/Script/jd_tb_price/main.js
+
+
+# > 去微博应用内广告 (yichahucha)
+^https?://(sdk|wb)app\.uve\.weibo\.com(/interface/sdk/sdkad.php|/wbapplua/wbpullad.lua) url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/wb_launch.js
+^https?://m?api\.weibo\.c(n|om)/2/(statuses/(unread|extend|positives/get|(friends|video)(/|_)(mix)?timeline)|stories/(video_stream|home_list)|(groups|fangle)/timeline|profile/statuses|comments/build_comments|photo/recommend_list|service/picfeed|searchall|cardlist|page|!/(photos/pic_recommend_status|live/media_homelist)|video/tiny_stream_video_list|photo/info|remind/unread_count) url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/wb_ad.js
+
+
+# > 百度网盘 解除在线视频倍率/清晰度
+^https:\/\/pan\.baidu\.com\/rest\/\d\.\d\/membership\/user url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/BaiduCloud.js
+
+
+# > WPS (By eHpo)
+^https?:\/\/[a-z-]*account\.wps\.c(n|om)(:\d+|)\/api\/users url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Wps.js
+
+
+# > 去微信公众号广告 (By Choler)
+^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
+
+
+# > 抖音去广告去水印 (By Choler)
+^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/(feed|aweme\/post|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list)\/ url script-request-header https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Aweme.js
+^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/(feed|aweme\/post|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list)\/ url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Aweme.js
