@@ -93,3 +93,7 @@ URL-REGEX,^https?:\/\/api\.zhihu\.com\/commercial_api\/launch_v2\? url reject-di
 ^https?:\/\/api\.zhihu\.com\/people\/self\/new_user_card url reject-200
 # 知乎去除Tab页关注人头像
 ^https?:\/\/api\.zhihu\.com\/moments\/tab_v2 url reject-dict
+
+# > 知乎去广告 (onewayticket255)
+# https://api.zhihu.com/(ad|drama|fringe|commercial|market/popover|search/(top|preset|tab)|.*featured-comment-ad) url reject-200
+
