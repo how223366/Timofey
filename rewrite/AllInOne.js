@@ -1,13 +1,13 @@
-hostname = biz.caiyunapp.com, testflight.apple.com, ap*.intsig.net, *.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com, www.zhihu.com,api.zhihu.com,zhuanlan.zhihu.com,appcloud2.zhihu.com,103.41.167.236,103.41.167.234,103.41.167.235,103.41.167.226, api.m.jd.com
+hostname = biz.caiyunapp.com, testflight.apple.com, ap*.intsig.net, *.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com, www.zhihu.com,api.zhihu.com,zhuanlan.zhihu.com,appcloud2.zhihu.com,103.41.167.236,103.41.167.234,103.41.167.235,103.41.167.226
 
-# > 彩云天气SVIP解锁(By Tartarus)
+# 彩云天气SVIP解锁(By Tartarus)
 # 需开启QuanX资源解析器
 彩云天气SVIP = type=http-response,requires-body=1,max-size=0,pattern=https?:\/\/biz\.caiyunapp\.com\/(membership_rights|v2\/user),script-path=https://raw.githubusercontent.com/Tartarus2014/Script/master/CaiYun.js
 
-# > Testflight下载修正
+# Testflight下载修正
 ^https?:\/\/testflight\.apple\.com\/v2\/accounts\/.*\/apps\/\d*/builds/\d*/install url request-body storefrontId" : ".*", request-body storefrontId" : "143441-1,29",
 
-# > 全能扫描王(By NobyDa)
+# 全能扫描王(By NobyDa)
 ^https:\/\/(api|api-cs)\.intsig\.net\/purchase\/cs\/query_property\? url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/CamScanner.js
 
 # > BiliBili去广告
@@ -35,12 +35,6 @@ hostname = biz.caiyunapp.com, testflight.apple.com, ap*.intsig.net, *.bilibili.c
 ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/Flash url reject-dict
 ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/ListFlash url reject-dict
 
-# > 哔哩哔哩动画去广告 (onewayticket255)
-https://app.bilibili.com/x/v2/(splash|search/square) url reject-200
-https://api.bilibili.com/x/v2/dm/ad url reject-200
-
-# > 哔哩哔哩番剧开启1080P+
-^https:\/\/ap(p|i)\.bilibili\.com\/((pgc\/player\/api\/playurl)|(x\/v2\/account\/myinfo\?)|(x\/v2\/account/mine\?)) url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/bilifj.js
 
 # > 知乎去广告+优化
 # 知乎处理用户信息
@@ -93,10 +87,3 @@ URL-REGEX,^https?:\/\/api\.zhihu\.com\/commercial_api\/launch_v2\? url reject-di
 ^https?:\/\/api\.zhihu\.com\/people\/self\/new_user_card url reject-200
 # 知乎去除Tab页关注人头像
 ^https?:\/\/api\.zhihu\.com\/moments\/tab_v2 url reject-dict
-
-# > 知乎去广告 (onewayticket255)
-https://api.zhihu.com/(ad|drama|fringe|commercial|market/popover|search/(top|preset|tab)|.*featured-comment-ad) url reject-200
-
-
-# > 京东比价
-^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig) url script-response-body https://service.2ti.st/QuanX/Script/jd_tb_price/main.js
