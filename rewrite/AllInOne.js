@@ -35,6 +35,9 @@ hostname = biz.caiyunapp.com, testflight.apple.com, ap*.intsig.net, *.bilibili.c
 ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/Flash url reject-dict
 ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/ListFlash url reject-dict
 
+# > 哔哩哔哩动画去广告 (onewayticket255)
+# https://app.bilibili.com/x/v2/(splash|search/square) url reject-200
+# https://api.bilibili.com/x/v2/dm/ad url reject-200
 
 # > 知乎去广告+优化
 # 知乎处理用户信息
