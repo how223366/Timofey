@@ -1,0 +1,24 @@
+# Gmail
+HOST-SUFFIX,gmail.com,Mail
+HOST-SUFFIX,googlemail.com,Mail
+HOST-KEYWORD,gmail,Mail
+HOST,imap.gmail.com,Mail
+HOST,pop.gmail.com,Mail
+HOST,smtp.gmail.com,Mail
+# Outlook
+HOST-SUFFIX,hotmail,Mail
+HOST-SUFFIX,hotmail.co,Mail
+HOST-SUFFIX,hotmail.com,Mail
+HOST-SUFFIX,hotmail.eu,Mail
+HOST-SUFFIX,hotmail.net,Mail
+HOST-SUFFIX,hotmail.org,Mail
+HOST-SUFFIX,microsoftemail.com,Mail
+HOST-SUFFIX,m.hotmail.com,Mail
+HOST,imap-mail.outlook.com,Mail
+HOST,outlook.office365.com,Mail
+HOST,smtp-mail.outlook.com,Mail
+HOST,smtp.office365.com,Mail
+# imail
+HOST-SUFFIX,icloudmail.net,Apple
+# yahoo
+HOST-SUFFIX,apple.imap.mail.yahoo.com,Mail
